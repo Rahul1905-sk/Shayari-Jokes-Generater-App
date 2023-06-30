@@ -8,6 +8,10 @@ function App() {
   const [genre, setGenre] = useState("");
   const [generatedShayari, setGeneratedShayari] = useState("");
 
+const handleChange = () => {
+  let a = true;
+}
+
   const generateShayari = async () => {
     // Send a request to the backend API with user preferences
 
@@ -21,7 +25,7 @@ function App() {
     console.log(obj);
     axios
       // .post("https://crimson-salamander-gown.cyclic.app/shayri", obj)
-      .post("http://localhost:8080/generateShayri", obj)
+      .post("https://long-puce-rabbit-slip.cyclic.app/generateShayri", obj)
       .then((response) => {
         // Handle the response here
         setGeneratedShayari(response.data);
@@ -53,7 +57,7 @@ function App() {
       <select value={keyword} onChange={(e) => setKeyword(e.target.value)}>
         <option value="">Select type</option>
         <option value="Shayari">Shayari</option>
-        <option value="Jokes">Jokes</option>
+        <option value="Joke">Jokes</option>
         {/* Add more genre options */}
       </select>
       {keyword === "Shayari" && (
@@ -72,6 +76,7 @@ function App() {
         <textarea
           style={{ width: "80%", height: "25vh" }}
           value={generatedShayari ? generatedShayari : ""}
+          onChange={handleChange}
         ></textarea>
       ) : (
         ""
