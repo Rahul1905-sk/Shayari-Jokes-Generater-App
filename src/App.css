@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+input, select, button {
+  margin: 10px;
+}
+
+.shayari {
+  margin-top: 20px;
+}
+
+*{
+  background-color: aliceblue;
+}
