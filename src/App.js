@@ -7,14 +7,14 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [genre, setGenre] = useState("");
   const [generatedShayari, setGeneratedShayari] = useState("");
-
+const [flag,setFlag] = useState(false)
 const handleChange = () => {
   let a = true;
 }
 
   const generateShayari = async () => {
     // Send a request to the backend API with user preferences
-
+    setFlag(true)
     let obj = {};
     if (genre) {
       obj.option = `tell me a ${keyword} about ${genre} in hinglish`;
@@ -29,6 +29,7 @@ const handleChange = () => {
       .then((response) => {
         // Handle the response here
         setGeneratedShayari(response.data);
+        setFlag(false)
       })
       .catch((error) => {
         // Handle errors here
@@ -70,7 +71,7 @@ const handleChange = () => {
           {/* Add more genre options */}
         </select>
       )}
-      <button onClick={generateShayari}>Generate</button>
+      <button disabled={flag}  onClick={generateShayari}>Generate</button>
 
       {generatedShayari ? (
         <textarea
